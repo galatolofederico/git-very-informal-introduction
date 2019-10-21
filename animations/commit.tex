@@ -1,0 +1,47 @@
+\begin{center}
+    \begin{tikzpicture}[
+        node/.style={
+            circle, 
+            draw,
+            radius=1cm,
+        },
+        file/.style={
+            rectangle, 
+            draw,
+            minimum width=2cm,
+            minimum height=1cm,
+        },
+        staging/.style={
+            rectangle, 
+            draw,
+            minimum width=3cm,
+            minimum height=4cm,
+        },
+    ]
+
+    \foreach \x in {1,2,4}{
+        \node (f\x) at (0,\x) [file] {F\x*};
+    }
+    \node (f3) at (0,3) [file] {F3};
+
+    \pause
+
+    \node (s) at (4, 2.5) [staging] {};
+    \node [] at  ($(s.north) + (0,-0.3)$)  {Staging};
+
+    \pause
+
+    \node (s4) at (4,3) [file] {F4*};
+    \node (s2) at (4,2) [file] {F2*};
+    
+    \draw [->] (f4) -- (s4);
+    \draw [->] (f2) -- (s2);
+    
+    \pause
+
+    \node (c) at (8, 2.5) [file] {Commit};
+    \draw [->] (s) -- (c);
+    
+    \onslide<1->
+    \end{tikzpicture}
+\end{center}
